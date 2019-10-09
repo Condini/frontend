@@ -1,0 +1,88 @@
+<div class="container">
+    <h2>Editar</h2>
+    <div class="form-horizontal">
+        <h4>Adicione uma nova pessoa</h4>
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Nome">Nome</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" value=""
+                    [(ngModel)]="request.nome" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Nome"
+                    data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Sobrenome">Sobrenome</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Sobrenome" name="Sobrenome" type="text" value=""
+                    [(ngModel)]="request.sobrenome" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Sobrenome"
+                    data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="CPF">CPF</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="CPF" name="CPF" type="text" value=""
+                    [(ngModel)]="request.cpf" [textMask]="{mask: cpfmask}" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="CPF"
+                    data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Email">Email</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Email" name="Email" type="text" value=""
+                    [(ngModel)]="request.email" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Email"
+                    data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Sexo">Sexo</label>
+            <div class="col-md-10">
+                <select autocomplete="off" list="dropdown" class="form-control text-box single-line" id="Sexo"
+                    name="Sexo" type="" value="" [(ngModel)]="request.sexo">
+                    <option value="1"> Masculino </option>
+                    <option value="2"> Feminino </option>
+                </select>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Sexo"
+                    data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Nascimento">Data de Nascimento</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true"
+                    data-val-date="The field Data de Nascimento must be a date."
+                    data-val-required="O campo Data de Nascimento é obrigatório." id="Nascimento" name="Nascimento"
+                    type="" [ngModel]="request.nascimento | date:'dd-MM-yyyy'" [textMask]="{mask: datamask}"
+                    (ngModelChange)="request.nascimento = $event" />
+
+                <span class="field-validation-valid text-danger" data-valmsg-for="Nascimento"
+                    data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Atualizar" class="btn btn-default" (click)="update()" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href="">Voltar para a lista</a>
+    </div>
+    <hr />
+    <footer>
+        <p>&copy; 2019 - My ASP.NET Application</p>
+    </footer>
+</div>

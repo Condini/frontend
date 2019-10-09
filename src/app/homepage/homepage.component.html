@@ -1,0 +1,67 @@
+<div class="container">
+    <h2 class="Agadois">Gerenciamento de cadastro</h2>
+    <p>
+        <a href="app-createperson">Adicionar nova pessoa</a>
+    </p>
+    <table *ngIf="users" class="table">
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Sobrenome
+            </th>
+            <th>
+                CPF
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Sexo
+            </th>
+            <th>
+                Data de Nascimento
+            </th>
+            <th></th>
+        </tr>
+
+
+        <tr class="list-users" *ngFor="let user of users">
+            <td>
+                {{user.nome}}
+            </td>
+            <td>
+                {{user.sobrenome}}
+            </td>
+            <td>
+
+                {{user.cpf}}
+            </td>
+            <td>
+                {{user.email}}
+            </td>
+            <ng-container *ngIf="user.sexo === 1">
+                <td align="left">
+                    Masculino
+                </td>
+            </ng-container>
+            <ng-container *ngIf="user.sexo === 2">
+                <td align="left">
+                    Feminino
+                </td>
+            </ng-container>
+            <td align="center">
+                {{user.nascimento | date: 'dd/MM/yyyy'}}
+            </td>
+            <td>
+                <a href="app-updateperson/{{user.id}}">Editar</a> |
+                <a href="app-readperson/{{user.id}}">Detalhes</a> |
+                <a href="app-deleteperson/{{user.id}}">Remover</a>
+            </td>
+        </tr>
+    </table>
+    <footer>
+        <p>&copy; 2019 - CRUD </p>
+    </footer>
+</div>
