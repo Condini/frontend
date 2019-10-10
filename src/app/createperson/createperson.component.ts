@@ -13,7 +13,7 @@ export class CreatepersonComponent implements OnInit {
   cpfmask = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/]
   datamask = [/[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
 
-  request = new RequestCreate();
+  request = new RequestCreate;
 
   response: ResponseCreate
 
