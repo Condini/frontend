@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User, RequestCreate, RequestUpdate } from '../homepage/pessoa.model';
 import { ServicoService } from '../homepage/servico.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class UpdatepersonComponent implements OnInit {
   user: User;
   id: string;
 
-  constructor(private ServicoService: ServicoService, private route: ActivatedRoute, private _route: Router) { }
+  constructor(private ServicoService: ServicoService, private route: ActivatedRoute, private _route: Router, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -41,7 +42,7 @@ export class UpdatepersonComponent implements OnInit {
 
   update() {
     this.ServicoService.updateUser(this.request).subscribe(res => {
-      alert('Dados atualizados');
+      this.toastrService.success('Usuário atualizado com sucesso!');
       this._route.navigate(['']);
     })
   }

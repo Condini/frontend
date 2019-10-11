@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicoService } from '../homepage/servico.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User, ResponseUser } from '../homepage/pessoa.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-deleteperson',
@@ -10,7 +11,7 @@ import { User, ResponseUser } from '../homepage/pessoa.model';
 })
 export class DeletepersonComponent implements OnInit {
 
-  constructor(private ServicoService: ServicoService, private route: ActivatedRoute, private _route: Router) { }
+  constructor(private ServicoService: ServicoService, private route: ActivatedRoute, private _route: Router, private toastrService: ToastrService) { }
 
   id: string;
   user: User;
@@ -26,7 +27,7 @@ export class DeletepersonComponent implements OnInit {
 
   delete() {
     this.ServicoService.deleteUser(this.id).subscribe(res => {
-      alert('Usuário removido!');
+      this.toastrService.success('Usuário removido com sucesso!');
       this._route.navigate(['']);
     })
   }

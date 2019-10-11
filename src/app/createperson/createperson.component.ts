@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestCreate, ResponseCreate } from '../homepage/pessoa.model';
 import { ServicoService } from '../homepage/servico.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-createperson',
@@ -17,7 +18,7 @@ export class CreatepersonComponent implements OnInit {
 
   response: ResponseCreate
 
-  constructor(private userService: ServicoService, private _router: Router) { }
+  constructor(private userService: ServicoService, private _router: Router, private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
@@ -27,7 +28,7 @@ export class CreatepersonComponent implements OnInit {
       this.response = res
       console.log('Este é o retorno do sucesso');
       console.log(res);
-      alert('Usuário adicionado!')
+      this.toastrService.success('Usuário criado com sucesso!');
       this._router.navigate(['']);
     }, erro => {
       console.error('Este é o retorno do erro');

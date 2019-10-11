@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { TextMaskModule } from 'angular2-text-mask';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +28,7 @@ import { ReadpersonComponent } from './readperson/readperson.component';
     CreatepersonComponent,
     UpdatepersonComponent,
     DeletepersonComponent,
-    ReadpersonComponent
+    ReadpersonComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +36,8 @@ import { ReadpersonComponent } from './readperson/readperson.component';
     AppRoutingModule,
     FormsModule,
     TextMaskModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'app-createperson', component: CreatepersonComponent },
