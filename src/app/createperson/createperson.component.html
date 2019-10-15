@@ -6,8 +6,8 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Nome">Nome</label>
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" value=""
-                    [(ngModel)]="request.nome" />
+                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" maxlength="30"
+                    value="" [(ngModel)]="request.nome" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="Nome"
                     data-valmsg-replace="true"></span>
             </div>
@@ -16,8 +16,8 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Sobrenome">Sobrenome</label>
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Sobrenome" name="Sobrenome" type="text" value=""
-                    [(ngModel)]="request.sobrenome" />
+                <input class="form-control text-box single-line" id="Sobrenome" name="Sobrenome" type="text"
+                    maxlength="30" value="" [(ngModel)]="request.sobrenome" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="Sobrenome"
                     data-valmsg-replace="true"></span>
             </div>
