@@ -41,10 +41,47 @@ export class UpdatepersonComponent implements OnInit {
   }
 
   update() {
-    this.ServicoService.updateUser(this.request).subscribe(res => {
-      this.toastrService.success('Usuário atualizado com sucesso!');
-      this._route.navigate(['']);
-    })
+    if (this.validarCamposUpdate(this.request)) {
+      this.ServicoService.updateUser(this.request).subscribe(res => {
+        this.toastrService.success('Usuário atualizado com sucesso!');
+        this._route.navigate(['']);
+      })
+    }
   }
 
+  validarCamposUpdate(request: RequestCreate): Boolean {
+
+    if (request != null) {
+      if (!request.nome || request.nome.length === 0) {
+        alert("Preencha o campo 'Nome'!");
+        return false;
+      }
+      if (!request.sobrenome || request.sobrenome.length === 0) {
+        alert("Preencha o campo 'Sobrenome'!");
+        return false;
+      }
+      if (!request.cpf || request.cpf.length === 0) {
+        alert("Preencha o campo 'CPF'!");
+        return false;
+      }
+      if (!request.email || request.email.length === 0) {
+        alert("Preencha o campo 'Email'!");
+        return false;
+      }
+      if (!request.sexo || request.sexo.length === 0) {
+        alert("Preencha o campo 'Sexo'!");
+        return false;
+      }
+      if (!request.nascimento) {
+        alert("Preencha o campo 'Nascimento'!");
+        return false;
+      }
+      else if (request = null) {
+        alert("É obrigatório preencher todos os campos!");
+        return false;
+      }
+    }
+    return true;
+  }
 }
+
