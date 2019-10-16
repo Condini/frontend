@@ -42,12 +42,23 @@ export class UpdatepersonComponent implements OnInit {
   }
 
   update() {
-    if (this.validarCamposUpdate(this.request)) {
+    if (this.validarCamposUpdate(this.request) && this.validarEmail(this.request)) {
       this.ServicoService.updateUser(this.request).subscribe(res => {
         this.toastrService.success('Usuário atualizado com sucesso!');
         this._route.navigate(['']);
       })
     }
+  }
+
+  validarEmail(request: RequestCreate) {
+    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+
+    if ((request.email.length <= 5 || !EMAIL_REGEXP.test(request.email))) {
+      alert("Insira um email válido!");
+      return false;
+    }
+
+    return true;
   }
 
   validarCamposUpdate(request: RequestCreate): Boolean {
