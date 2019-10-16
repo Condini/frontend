@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ValidacaoService } from '../validacao.service';
 import { isCPF } from 'brazilian-values';
 
+
 @Component({
   selector: 'app-createperson',
   templateUrl: './createperson.component.html',
@@ -26,7 +27,7 @@ export class CreatepersonComponent implements OnInit {
   }
 
   save() {
-    if (this.validarCampos(this.request, this.response)) {
+    if (this.validarCampos(this.request, this.response) && this.validarEmail(this.request)) {
       this.userService.createUser(this.request).subscribe(res => {
         this.response = res
         console.log('Este é o retorno do sucesso');
@@ -39,6 +40,18 @@ export class CreatepersonComponent implements OnInit {
       });
     }
   }
+
+  validarEmail(request: RequestCreate) {
+    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+
+    if ((request.email.length <= 5 || !EMAIL_REGEXP.test(request.email))) {
+      alert("Insira um email válido!");
+      return false;
+    }
+
+    return true;
+  }
+
 
   validarCampos(request: RequestCreate, response: ResponseCreate): Boolean {
 
