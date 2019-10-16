@@ -4,6 +4,7 @@ import { ServicoService } from '../homepage/servico.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ValidacaoService } from '../validacao.service';
+import { isCPF } from 'brazilian-values';
 
 @Component({
   selector: 'app-createperson',
@@ -64,6 +65,11 @@ export class CreatepersonComponent implements OnInit {
       }
       if (!request.nascimento) {
         alert("Preencha o campo 'Nascimento'!");
+        return false;
+      }
+      //Verificação se CPF existe ou não
+      if (!isCPF(request.cpf)) {
+        alert("O CPF inserido não existe ou não é válido.");
         return false;
       }
       else if (response = null) {
