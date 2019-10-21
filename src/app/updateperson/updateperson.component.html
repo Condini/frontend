@@ -6,8 +6,8 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Nome">Nome</label>
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" value=""
-                    [(ngModel)]="request.nome" />
+                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" maxlength="15"
+                    value="" [(ngModel)]="request.nome" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="Nome"
                     data-valmsg-replace="true"></span>
             </div>
@@ -16,8 +16,8 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Sobrenome">Sobrenome</label>
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Sobrenome" name="Sobrenome" type="text" value=""
-                    [(ngModel)]="request.sobrenome" />
+                <input class="form-control text-box single-line" id="Sobrenome" name="Sobrenome" type="text"
+                    maxlength="15" value="" [(ngModel)]="request.sobrenome" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="Sobrenome"
                     data-valmsg-replace="true"></span>
             </div>
@@ -36,8 +36,8 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Email">Email</label>
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Email" name="Email" type="text" value=""
-                    [(ngModel)]="request.email" />
+                <input class="form-control text-box single-line" id="Email" name="Email" type="text" maxlength="50"
+                    value="" [(ngModel)]="request.email" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="Email"
                     data-valmsg-replace="true"></span>
             </div>
@@ -61,9 +61,9 @@
             <div class="col-md-10">
                 <input class="form-control text-box single-line" data-val="true"
                     data-val-date="The field Data de Nascimento must be a date."
-                    data-val-required="O campo Data de Nascimento é obrigatório." id="Nascimento" name="Nascimento"
-                    type="" [ngModel]="request.nascimento | date:'dd-MM-yyyy'" [textMask]="{mask: datamask}"
-                    (ngModelChange)="request.nascimento = $event" />
+                    data-val-required="O campo Data de Nascimento é obrigatório."
+                    placeholder="Insira a nova data de nascimento" id="Nascimento" name="Nascimento"
+                    type="datetime-local" [(ngModel)]="request.nascimento" />
 
                 <span class="field-validation-valid text-danger" data-valmsg-for="Nascimento"
                     data-valmsg-replace="true"></span>

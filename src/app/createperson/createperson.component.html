@@ -6,7 +6,7 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Nome">Nome</label>
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" maxlength="30"
+                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" maxlength="15"
                     value="" [(ngModel)]="request.nome" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="Nome"
                     data-valmsg-replace="true"></span>
@@ -17,7 +17,7 @@
             <label class="control-label col-md-2" for="Sobrenome">Sobrenome</label>
             <div class="col-md-10">
                 <input class="form-control text-box single-line" id="Sobrenome" name="Sobrenome" type="text"
-                    maxlength="30" value="" [(ngModel)]="request.sobrenome" />
+                    maxlength="15" value="" [(ngModel)]="request.sobrenome" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="Sobrenome"
                     data-valmsg-replace="true"></span>
             </div>
@@ -36,8 +36,8 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="Email">Email</label>
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Email" name="Email" type="email" value=""
-                    [(ngModel)]="request.email" />
+                <input class="form-control text-box single-line" id="Email" name="Email" type="email" maxlength="50"
+                    value="" [(ngModel)]="request.email" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="Email"
                     data-valmsg-replace="true"></span>
             </div>

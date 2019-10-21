@@ -3,7 +3,7 @@ import { User, RequestCreate, RequestUpdate } from '../homepage/pessoa.model';
 import { ServicoService } from '../homepage/servico.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { isCPF } from 'brazilian-values';
+import { isCPF, isCNPJ } from 'brazilian-values';
 
 
 @Component({
@@ -16,8 +16,8 @@ export class UpdatepersonComponent implements OnInit {
 
   // [textMask]="{mask: cpfmask}"
   cpfmask = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/]
-
-  datamask = [/[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
+  //datamask = [/[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
+  datamask = [/[0-2]/, /[1-9]/, '/', /[0-1]/, /[0-9]/, '/', /[1-2]/, /[0-9]/, /[0-9]/, /[0-9]/]
   datainvertidamask = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/]
 
   request: RequestUpdate;
@@ -48,6 +48,10 @@ export class UpdatepersonComponent implements OnInit {
         this._route.navigate(['']);
       })
     }
+  }
+
+  clearNascimento() {
+    this.request.nascimento = null;
   }
 
   validarEmail(request: RequestCreate) {
