@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 import { ResponseUsers, ResponseCreate, RequestCreate, ResponseUser, User, RequestUpdate, ResponseUpdate } from './pessoa.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 
 @Injectable({
@@ -12,9 +12,11 @@ export class ServicoService {
   private _url = 'http://localhost:49971/api';
 
   user: User;
-
+  users: any
 
   constructor(private http: HttpClient) { }
+
+
 
   getUsers(): Observable<User> {
     return this.http.get<User>(this._url + '/GetPessoaData');
@@ -36,6 +38,16 @@ export class ServicoService {
   deleteUser(id: string): Observable<any> {
     const url = this._url + '/DeletePessoa/' + id;
     return this.http.delete<any>(url);
+  }
+
+  verificaCPFdup(users: RequestCreate) {
+    this.getUsers().subscribe((res) => {
+      this.users = res;
+      if (res.cpf == users.cpf) {
+        alert("CPF já existente na base de dados!")
+        return false;
+      }
+    })
   }
   // oi
 
