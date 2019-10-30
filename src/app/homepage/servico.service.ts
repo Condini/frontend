@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, observable } from 'rxjs';
+import { Observable, observable, throwError, of } from 'rxjs';
 import { ResponseUsers, ResponseCreate, RequestCreate, ResponseUser, User, RequestUpdate, ResponseUpdate } from './pessoa.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+
 
 
 @Injectable({
@@ -16,6 +18,10 @@ export class ServicoService {
 
   constructor(private http: HttpClient) { }
 
+  private handleError(res: Response | any) {
+    alert("CPF já existente");
+    return Observable.throw('CPF JÁ EXISTENTE');
+  }
 
 
   getUsers(): Observable<User> {
