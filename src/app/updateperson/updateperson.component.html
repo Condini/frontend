@@ -8,8 +8,6 @@
             <div class="col-md-10">
                 <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" maxlength="15"
                     value="" [(ngModel)]="request.nome" />
-                <span class="field-validation-valid text-danger" data-valmsg-for="Nome"
-                    data-valmsg-replace="true"></span>
             </div>
         </div>
 
@@ -18,8 +16,6 @@
             <div class="col-md-10">
                 <input class="form-control text-box single-line" id="Sobrenome" name="Sobrenome" type="text"
                     maxlength="15" value="" [(ngModel)]="request.sobrenome" />
-                <span class="field-validation-valid text-danger" data-valmsg-for="Sobrenome"
-                    data-valmsg-replace="true"></span>
             </div>
         </div>
 
@@ -28,8 +24,6 @@
             <div class="col-md-10">
                 <input class="form-control text-box single-line" id="CPF" name="CPF" type="text" value=""
                     [(ngModel)]="request.cpf" [textMask]="{mask: cpfmask}" />
-                <span class="field-validation-valid text-danger" data-valmsg-for="CPF"
-                    data-valmsg-replace="true"></span>
             </div>
         </div>
 
@@ -38,8 +32,6 @@
             <div class="col-md-10">
                 <input class="form-control text-box single-line" id="Email" name="Email" type="text" maxlength="50"
                     value="" [(ngModel)]="request.email" />
-                <span class="field-validation-valid text-danger" data-valmsg-for="Email"
-                    data-valmsg-replace="true"></span>
             </div>
         </div>
 
@@ -51,8 +43,6 @@
                     <option value="1"> Masculino </option>
                     <option value="2"> Feminino </option>
                 </select>
-                <span class="field-validation-valid text-danger" data-valmsg-for="Sexo"
-                    data-valmsg-replace="true"></span>
             </div>
         </div>
 
@@ -60,13 +50,9 @@
             <label class="control-label col-md-2" for="Nascimento">Data de Nascimento</label>
             <div class="col-md-10">
                 <input class="form-control text-box single-line" data-val="true"
-                    data-val-date="The field Data de Nascimento must be a date."
-                    data-val-required="O campo Data de Nascimento é obrigatório."
                     placeholder="Insira a nova data de nascimento" id="Nascimento" name="Nascimento"
                     type="datetime-local" [(ngModel)]="request.nascimento" />
                 <p>Obs:. O horário não será considerado mas é obrigatório.</p>
-                <span class="field-validation-valid text-danger" data-valmsg-for="Nascimento"
-                    data-valmsg-replace="true"></span>
             </div>
         </div>
 
