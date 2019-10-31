@@ -46,6 +46,10 @@ export class UpdatepersonComponent implements OnInit {
       this.ServicoService.updateUser(this.request).subscribe(res => {
         this.toastrService.success('Usuário atualizado com sucesso!');
         this._route.navigate(['']);
+      }, erro => {
+        console.error(erro.error.Message);
+        console.error(erro)
+        alert(erro.error.Message);
       })
     }
   }
