@@ -29,6 +29,10 @@ export class CreatepersonComponent implements OnInit {
   ngOnInit() {
   }
 
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+  }
+
   save() {
     if (this.validarCampos(this.request, this.response) && this.validarEmail(this.request)) {
       this.userService.createUser(this.request).subscribe(res => {

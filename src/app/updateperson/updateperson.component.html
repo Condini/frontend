@@ -1,12 +1,12 @@
 <div class="container">
     <h2>Editar</h2>
     <div class="form-horizontal">
-        <h4>Adicione uma nova pessoa</h4>
+        <h4>Editar dados da pessoa</h4>
         <hr />
         <div class="form-group">
             <label class="control-label col-md-2" for="Nome">Nome</label>
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="Nome" name="Nome" type="text" maxlength="15"
+                <input class="form-control text-box single-line" id="nome" name="Nome" type="text" maxlength="15"
                     value="" [(ngModel)]="request.nome" />
             </div>
         </div>
@@ -50,8 +50,8 @@
             <label class="control-label col-md-2" for="Nascimento">Data de Nascimento</label>
             <div class="col-md-10">
                 <input class="form-control text-box single-line" data-val="true"
-                    placeholder="Insira a nova data de nascimento" id="Nascimento" name="Nascimento"
-                    type="datetime-local" [(ngModel)]="request.nascimento" />
+                    placeholder="Insira a nova data de nascimento" id="Nascimento" name="Nascimento" type="date"
+                    [(ngModel)]="nasc" [max]="today" />
                 <p>Obs:. O horário não será considerado mas é obrigatório.</p>
             </div>
         </div>

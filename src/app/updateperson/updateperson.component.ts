@@ -23,12 +23,16 @@ export class UpdatepersonComponent implements OnInit {
   request: RequestUpdate;
   user: User;
   id: string;
+  nasc: string;
+  today: string;
 
   constructor(private ServicoService: ServicoService, private route: ActivatedRoute, private _route: Router, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.today = this.formatDate(new Date);
     this.ServicoService.getUser(this.id).subscribe(res => {
+      this.nasc = this.formatDate(res.nascimento);
       this.request = {
         id: res.id,
         nome: res.nome,
@@ -39,6 +43,20 @@ export class UpdatepersonComponent implements OnInit {
         nascimento: res.nascimento
       }
     });
+  }
+
+  formatDate(date: Date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
+
+    return [year, month, day].join('-');
   }
 
   update() {
