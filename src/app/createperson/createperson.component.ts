@@ -29,10 +29,6 @@ export class CreatepersonComponent implements OnInit {
   ngOnInit() {
   }
 
-  getToday(): string {
-    return new Date().toISOString().split('T')[0]
-  }
-
   save() {
     if (this.validarCampos(this.request, this.response) && this.validarEmail(this.request)) {
       this.userService.createUser(this.request).subscribe(res => {
@@ -63,6 +59,13 @@ export class CreatepersonComponent implements OnInit {
 
 
   validarCampos(request: RequestCreate, response: ResponseCreate): Boolean {
+    var date1 = new Date(request.nascimento);
+    var date2 = new Date();
+    if (date1 > date2) {
+      alert("Não é permitido datas futuras ao dia de hoje no campo ' Data de Nascimento '.");
+      return false;
+    }
+
     if (request != null) {
       if (!request.nome || request.nome.length === 0) {
         alert("Preencha o campo 'Nome'!");

@@ -4,6 +4,7 @@ import { ServicoService } from '../homepage/servico.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { isCPF, isCNPJ } from 'brazilian-values';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class UpdatepersonComponent implements OnInit {
   id: string;
   nasc: string;
   today: string;
+  hoje = new Date();
 
   constructor(private ServicoService: ServicoService, private route: ActivatedRoute, private _route: Router, private toastrService: ToastrService) { }
 
@@ -58,6 +60,19 @@ export class UpdatepersonComponent implements OnInit {
 
     return [year, month, day].join('-');
   }
+  formatDate2(date: Date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
+
+    return [day, month, year].join('-');
+  }
 
   update() {
     if (this.validarCamposUpdate(this.request) && this.validarEmail(this.request)) {
@@ -88,6 +103,12 @@ export class UpdatepersonComponent implements OnInit {
   }
 
   validarCamposUpdate(request: RequestCreate): Boolean {
+    var date1 = new Date(request.nascimento);
+    var date2 = new Date();
+    if (date1 > date2) {
+      alert("Não é permitido datas futuras ao dia de hoje no campo ' Data de Nascimento '.");
+      return false;
+    }
 
     if (request != null) {
       if (!request.nome || request.nome.length === 0) {

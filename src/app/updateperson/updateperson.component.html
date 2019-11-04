@@ -50,8 +50,8 @@
             <label class="control-label col-md-2" for="Nascimento">Data de Nascimento</label>
             <div class="col-md-10">
                 <input class="form-control text-box single-line" data-val="true"
-                    placeholder="Insira a nova data de nascimento" id="Nascimento" name="Nascimento" type="date"
-                    [(ngModel)]="nasc" [max]="today" />
+                    placeholder="Insira a nova data de nascimento" id="Nascimento" name="Nascimento"
+                    type="datetime-local" [(ngModel)]="request.nascimento" [max]="today" />
                 <p>Obs:. O horário não será considerado mas é obrigatório.</p>
             </div>
         </div>
