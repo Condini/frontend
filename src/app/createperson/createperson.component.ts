@@ -61,6 +61,11 @@ export class CreatepersonComponent implements OnInit {
   validarCampos(request: RequestCreate, response: ResponseCreate): Boolean {
     var date1 = new Date(request.nascimento);
     var date2 = new Date();
+    var date3 = new Date("01-01-1900");
+    if (date1 < date3) {
+      alert("Não são permitidas datas antecedentes ao ano 1900.");
+      return false;
+    }
     if (date1 > date2) {
       alert("Não são permitidas datas futuras ao dia de hoje no campo 'Data de Nascimento'.");
       return false;
