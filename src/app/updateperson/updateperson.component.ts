@@ -92,8 +92,7 @@ export class UpdatepersonComponent implements OnInit {
   }
 
   validarEmail(request: RequestCreate) {
-    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-
+    let EMAIL_REGEXP = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if ((request.email.length <= 5 || !EMAIL_REGEXP.test(request.email))) {
       alert("Insira um email válido!");
       return false;
@@ -106,10 +105,19 @@ export class UpdatepersonComponent implements OnInit {
     var date1 = new Date(request.nascimento);
     var date2 = new Date();
     if (date1 > date2) {
-      alert("Não é permitido datas futuras ao dia de hoje no campo ' Data de Nascimento '.");
+      alert("Não são permitidas datas futuras ao dia de hoje no campo 'Data de Nascimento'.");
       return false;
     }
-
+    let NOMES_REGEXP = /^[a-zA-Z]*[a-zA-Z]+[a-zA-Z]*$/;
+    if (!NOMES_REGEXP.test(request.nome)) {
+      alert("Insira um nome válido");
+      return false;
+    }
+    if (!NOMES_REGEXP.test(request.sobrenome)) {
+      alert("Insira um sobrenome válido");
+      return false;
+    }
+    //////
     if (request != null) {
       if (!request.nome || request.nome.length === 0) {
         alert("Preencha o campo 'Nome'!");

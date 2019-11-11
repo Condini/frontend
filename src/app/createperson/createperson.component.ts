@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ValidacaoService } from '../validacao.service';
 import { isCPF, formatToDate } from 'brazilian-values';
 import { Observable } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -47,8 +48,7 @@ export class CreatepersonComponent implements OnInit {
 
 
   validarEmail(request: RequestCreate) {
-    let EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+    let EMAIL_REGEXP = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if ((request.email.length <= 5 || !EMAIL_REGEXP.test(request.email))) {
       alert("Insira um email válido!");
       return false;
@@ -62,10 +62,19 @@ export class CreatepersonComponent implements OnInit {
     var date1 = new Date(request.nascimento);
     var date2 = new Date();
     if (date1 > date2) {
-      alert("Não é permitido datas futuras ao dia de hoje no campo ' Data de Nascimento '.");
+      alert("Não são permitidas datas futuras ao dia de hoje no campo 'Data de Nascimento'.");
       return false;
     }
-
+    let NOMES_REGEXP = /^[a-zA-Z]*[a-zA-Z]+[a-zA-Z]*$/;
+    if (!NOMES_REGEXP.test(request.nome)) {
+      alert("Insira um nome válido");
+      return false;
+    }
+    if (!NOMES_REGEXP.test(request.sobrenome)) {
+      alert("Insira um sobrenome válido");
+      return false;
+    }
+    //////
     if (request != null) {
       if (!request.nome || request.nome.length === 0) {
         alert("Preencha o campo 'Nome'!");
@@ -97,11 +106,12 @@ export class CreatepersonComponent implements OnInit {
         return false;
       }
       //
-      else if (response = null) {
-        alert("É obrigatório preencher todos os campos!");
-        return false;
-      }
     }
+    else if (request = null) {
+      alert("É obrigatório preencher todos os campos!");
+      return false;
+    }
+
     return true;
   }
 }
