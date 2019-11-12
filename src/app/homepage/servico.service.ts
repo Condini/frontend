@@ -18,12 +18,6 @@ export class ServicoService {
 
   constructor(private http: HttpClient) { }
 
-  private handleError(res: Response | any) {
-    alert("CPF já existente");
-    return Observable.throw('CPF JÁ EXISTENTE');
-  }
-
-
   getUsers(): Observable<User> {
     return this.http.get<User>(this._url + '/GetPessoaData');
   }
@@ -55,7 +49,6 @@ export class ServicoService {
       }
     })
   }
-  // oi
 
 
 
