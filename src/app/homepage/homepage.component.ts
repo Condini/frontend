@@ -18,7 +18,6 @@ export class HomepageComponent implements OnInit {
   constructor(private userService: ServicoService) { }
 
   ngOnInit() {
-    debugger
     this.userService.getUsers().subscribe((res) => {
       this.users = res;
 
