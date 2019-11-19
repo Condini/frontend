@@ -113,7 +113,7 @@ export class UpdatepersonComponent implements OnInit {
       alert("Não são permitidas datas futuras ao dia de hoje no campo 'Data de Nascimento'.");
       return false;
     }
-    let NOMES_REGEXP = /^[a-zA-Z]*[a-zA-Z]+[a-zA-Z]*$/;
+    let NOMES_REGEXP = /^([a-zA-ZáéíóúüÁÉÍÓÚÜãõÃÕâêîôûÂÊÎÔÛ$][a-zA-Z áéíóúüÁÉÍÓÚÜãõÃÕâêîôûÂÊÎÔÛ$]*)+$/;
     if (!NOMES_REGEXP.test(request.nome)) {
       alert("Insira um nome válido");
       return false;
