@@ -9,10 +9,6 @@ import { User } from './pessoa.model';
 })
 export class HomepageComponent implements OnInit {
 
-  cpfmask = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/]
-
-  datamask = [/[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
-
   users: any;
 
   constructor(private userService: ServicoService) { }
@@ -24,7 +20,6 @@ export class HomepageComponent implements OnInit {
       for (let x = 0; x < this.users.length; x++) {
         this.users[x].cpf = this.users[x].cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "\$1.\$2.\$3\-\$4");
       }
-
       console.log(this.users)
     });
   }

@@ -4,9 +4,8 @@ import { ServicoService } from '../homepage/servico.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ValidacaoService } from '../validacao.service';
-import { isCPF, formatToDate } from 'brazilian-values';
-import { Observable } from 'rxjs';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { isCPF } from 'brazilian-values';
+
 
 
 @Component({
@@ -17,13 +16,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CreatepersonComponent implements OnInit {
 
   cpfmask = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/]
-  datamask = [/[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
 
   request = new RequestCreate;
 
   response: ResponseCreate
-
-
 
   constructor(private userService: ServicoService, private _router: Router, private toastrService: ToastrService, private validacaoCreate: ValidacaoService) { }
 
@@ -53,10 +49,8 @@ export class CreatepersonComponent implements OnInit {
       alert("Insira um email válido!");
       return false;
     }
-
     return true;
   }
-
 
   validarCampos(request: RequestCreate, response: ResponseCreate): Boolean {
     var date1 = new Date(request.nascimento);
@@ -111,12 +105,10 @@ export class CreatepersonComponent implements OnInit {
         return false;
       }
       //
-    }
-    else if (request = null) {
+    } else {
       alert("É obrigatório preencher todos os campos!");
       return false;
     }
-
     return true;
   }
 }

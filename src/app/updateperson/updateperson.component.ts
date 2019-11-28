@@ -14,19 +14,13 @@ import { DatePipe } from '@angular/common';
 })
 export class UpdatepersonComponent implements OnInit {
 
-
-  // [textMask]="{mask: cpfmask}"
   cpfmask = [/[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/]
-  //datamask = [/[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
-  datamask = [/[0-2]/, /[1-9]/, '/', /[0-1]/, /[0-9]/, '/', /[1-2]/, /[0-9]/, /[0-9]/, /[0-9]/]
-  datainvertidamask = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/, '/', /[0-9]/, /[0-9]/]
 
   request: RequestUpdate;
   user: User;
   id: string;
   nasc: string;
   today: string;
-  hoje = new Date();
 
   constructor(private ServicoService: ServicoService, private route: ActivatedRoute, private _route: Router, private toastrService: ToastrService) { }
 
@@ -60,19 +54,6 @@ export class UpdatepersonComponent implements OnInit {
 
     return [year, month, day].join('-');
   }
-  formatDate2(date: Date) {
-    var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2)
-      month = '0' + month;
-    if (day.length < 2)
-      day = '0' + day;
-
-    return [day, month, year].join('-');
-  }
 
   update() {
     if (this.validarCamposUpdate(this.request) && this.validarEmail(this.request)) {
@@ -97,7 +78,6 @@ export class UpdatepersonComponent implements OnInit {
       alert("Insira um email válido!");
       return false;
     }
-
     return true;
   }
 
