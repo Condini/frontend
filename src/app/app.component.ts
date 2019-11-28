@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent {
   title = 'ParteAngular';
+  public paginaAtual = 1;
 
 
 }

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TextMaskModule } from 'angular2-text-mask';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +37,7 @@ import { ReadpersonComponent } from './readperson/readperson.component';
     AppRoutingModule,
     FormsModule,
     TextMaskModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot([

@@ -27,7 +27,8 @@
         </tr>
 
 
-        <tr class="list-users" *ngFor="let user of users">
+        <tr class="list-users"
+            *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: paginaAtual }; let i = index">
             <td>
                 {{user.nome}}
             </td>
@@ -61,7 +62,16 @@
             </td>
         </tr>
     </table>
-    <footer>
+    <div class="row">
+        <div class="col-sm">
+            <pagination-controls align="right" (pageChange)="paginaAtual = $event" previousLabel="Anterior"
+                nextLabel="Próximo">
+            </pagination-controls>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <footer class="fixed-bottom">
         <p>&copy; 2019 - CRUD </p>
     </footer>
 </div>
