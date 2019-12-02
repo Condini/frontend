@@ -18,6 +18,7 @@ import { ServicoService } from './homepage/servico.service';
 import { UpdatepersonComponent } from './updateperson/updateperson.component';
 import { DeletepersonComponent } from './deleteperson/deleteperson.component';
 import { ReadpersonComponent } from './readperson/readperson.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -30,6 +31,7 @@ import { ReadpersonComponent } from './readperson/readperson.component';
     UpdatepersonComponent,
     DeletepersonComponent,
     ReadpersonComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -45,7 +47,8 @@ import { ReadpersonComponent } from './readperson/readperson.component';
       { path: 'app-createperson', component: CreatepersonComponent },
       { path: 'app-updateperson/:id', component: UpdatepersonComponent },
       { path: 'app-deleteperson/:id', component: DeletepersonComponent },
-      { path: 'app-readperson/:id', component: ReadpersonComponent }
+      { path: 'app-readperson/:id', component: ReadpersonComponent },
+      { path: '**', component: NotFoundComponent }
 
     ])
   ],
