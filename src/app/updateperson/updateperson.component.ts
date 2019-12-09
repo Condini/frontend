@@ -38,8 +38,14 @@ export class UpdatepersonComponent implements OnInit {
         sexo: `${res.sexo}`,
         nascimento: res.nascimento
       }
+    }, erro => {
+      this._route.navigate(['404']);
+      console.error(erro.error.Message);
+      console.error(erro)
+      alert(erro.error.Message);
     });
   }
+
 
   formatDate(date: Date) {
     var d = new Date(date),
